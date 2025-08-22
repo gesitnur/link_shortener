@@ -1,0 +1,31 @@
+<h1 class="text-2xl font-bold mb-6 text-center">Buat Short Link</h1>
+
+<%= form_with model: @link, local: true, class: "space-y-5" do |f| %>
+  <% if @link.errors.any? %>
+    <div class="bg-red-100 text-red-700 p-3 rounded-md">
+      <h3 class="font-semibold"><%= pluralize(@link.errors.count, "error") %>:</h3>
+      <ul class="list-disc list-inside">
+        <% @link.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :original_url, "URL Asli", class: "block font-semibold mb-1" %>
+    <%= f.text_field :original_url, placeholder: "https://example.com",
+          class: "w-full border border-gray-300 p-2 rounded-lg focus:ring focus:ring-indigo-400" %>
+  </div>
+
+  <div>
+    <%= f.label :short_code, "Custom Short Code (opsional)", class: "block font-semibold mb-1" %>
+    <%= f.text_field :short_code, placeholder: "misalnya: gesit123",
+          class: "w-full border border-gray-300 p-2 rounded-lg focus:ring focus:ring-indigo-400" %>
+  </div>
+
+  <div class="text-center">
+    <%= f.submit "Buat Short Link",
+          class: "px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow" %>
+  </div>
+<% end %>

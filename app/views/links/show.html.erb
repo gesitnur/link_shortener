@@ -1,0 +1,15 @@
+<h1 class="text-2xl font-bold mb-6 text-center">Short Link Berhasil Dibuat!</h1>
+
+<div class="space-y-4">
+  <p><span class="font-semibold">URL Asli:</span> <%= @link.original_url %></p>
+  <p>
+    <span class="font-semibold">Short Link:</span> 
+    <%= link_to short_url(@link.short_code), short_url(@link.short_code),
+          class: "text-indigo-600 hover:underline font-semibold", target: "_blank" %>
+  </p>
+</div>
+
+<div class="mt-6 text-center">
+  <%= link_to "Buat lagi", new_link_path,
+        class: "px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow" %>
+</div>
